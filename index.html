@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Люблю Ксюню ❤️</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffdde1;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff4b5c;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .heart {
+            font-size: 4rem;
+            animation: heartbeat 1s infinite alternate;
+        }
+
+        @keyframes heartbeat {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Анимация падающих сердечек */
+        .falling-heart {
+            position: absolute;
+            color: #ff4b5c;
+            font-size: 1.5rem;
+            top: -50px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Люблю Ксюню ❤️</h1>
+        <div class="heart">💖</div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("falling-heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s"; // 2-5 сек падения
+            heart.style.fontSize = (Math.random() * 1.5 + 1) + "rem"; // Размеры сердечек
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // Удаляем через 5 сек
+        }
+
+        setInterval(createHeart, 300); // Каждые 300 мс новое сердечко
+    </script>
+</body>
+</html>
