@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 14 февраля, любовь моя!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: pink;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        .container {
+            position: relative;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: red;
+            z-index: 2;
+        }
+        .image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        .left {
+            left: 10%;
+        }
+        .right {
+            right: 10%;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-10vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="left.jpg" alt="Любимая" class="image left">
+    <div class="container">С 14 февраля, любовь моя ❤️</div>
+    <img src="right.jpg" alt="Я" class="image right">
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
